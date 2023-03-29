@@ -1,0 +1,16 @@
+version: '3.1'
+volumes:
+  data:
+services:
+ postgres:
+  container_name: desafio_oinc_postgresql
+  image: postgres:15
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+  restart: always
+  ports: 
+    - 5432:5432
+  volumes:
+    - data:/var/lib/desafio_oinc/postgresql/data
+    - ./scripts:/docker-entrypoint-initdb.d/
